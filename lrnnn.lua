@@ -1,20 +1,5 @@
-----------------------------------------------------------------------
--- This script shows how to train different models on the MNIST 
--- dataset, using multiple optimization techniques (SGD, LBFGS)
 --
--- This script demonstrates a classical example of training 
--- well-known models (convnet, MLP, logistic regression)
--- on a 10-class classification problem. 
 --
--- It illustrates several points:
--- 1/ description of the model
--- 2/ choice of a loss function (criterion) to minimize
--- 3/ creation of a dataset as a simple Lua table
--- 4/ description of training and test procedures
---
--- Clement Farabet
-----------------------------------------------------------------------
-
 require 'torch'
 require 'nn'
 require 'optim'
