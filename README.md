@@ -13,7 +13,8 @@ This repo contains a demo for the following technical report ([PDF](https://hotl
 ```
 
 Basically, the report discusses some modifications of the method introduced by Ren et al. (CVPR2014), "Face Alignment at 3000 FPS via Regressing Local Binary Features".
-However, instead to face alignment, these ideas are applied to MNIST classification.
+However, instead to face alignment, these ideas are here applied to MNIST classification.
+This approach can illustrate the basic idea of the report in a relatively few lines of code.
 
 ## Running the code
 
