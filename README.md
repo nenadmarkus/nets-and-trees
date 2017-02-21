@@ -17,7 +17,7 @@ However, instead to face alignment, we apply these ideas to MNIST-digit classifi
 
 ## Running the code
 
-Learn the trees first (256 trees of depth 12):
+After compiling `tree.c` (use the provided `makefile`), learn the trees (256 trees of depth 12):
 
 	th lrntrees.lua
 
