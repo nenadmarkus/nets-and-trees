@@ -35,7 +35,7 @@ Could this be attributed to the "instability" of the pixel-difference features u
 
 MIT.
 
-Also note that this repo contains modified code initially taken from [here](https://github.com/torch/demos/tree/master/train-a-digit-classifier).
+Also note that this repo contains code modified from [here](https://github.com/torch/demos/tree/master/train-a-digit-classifier).
 
 ## Contact
 
