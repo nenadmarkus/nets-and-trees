@@ -1,6 +1,6 @@
 # Combining neural networks and decision trees
 
-This repo contains a demo for the following technical report ([PDF](https://hotlab.fer.hr/_download/repository/megr.pdf)):
+This repo contains a demo for the following technical report ([arXiv](https://arxiv.org/abs/1702.08481)):
 
 ```
 @misc
@@ -8,7 +8,8 @@ This repo contains a demo for the following technical report ([PDF](https://hotl
 	nets-and-trees,
 	author = {Nenad Marku\v{s} and Ivan Gogi\'c and Igor S. Pand\v{z}i\'c and J\"{o}rgen Ahlberg},
 	title = {{Memory-Efficient Global Refinement of Decision-Tree Ensembles and its Application to Face Alignment}},
-	year = {2017}
+	year = {2017},
+	eprint = {arXiv:1702.08481}
 }
 ```
 

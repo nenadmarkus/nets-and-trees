@@ -294,7 +294,7 @@ int learn_subtree(int32_t* nodes, int nodeidx, int depth, int maxdepth, int atom
 		n[0] = mwcrand()%nrows;
 		n[1] = mwcrand()%ncols;
 		n[2] = mwcrand()%nrows;
-		n[3] = mwcrand()%ncols; // irrelevant
+		n[3] = mwcrand()%ncols;
 
 		//
 		learn_subtree(nodes, 2*nodeidx+1, depth+1, maxdepth, atoms, ppixels, nrows, ncols, &inds[0], ninds);
