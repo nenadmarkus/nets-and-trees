@@ -254,40 +254,7 @@ int learn_subtree(int32_t* nodes, int nodeidx, int depth, int maxdepth, int atom
 
 	//
 	if(depth == maxdepth)
-	{
-		int max, atom;
-
-		#define MAXNATOMS (2048)
-		int counts[MAXNATOMS];
-
-		//
-		memset(counts, 0, MAXNATOMS*sizeof(int));
-
-		for(i=0; i<ninds; ++i)
-			++counts[ atoms[inds[i]] ];
-
-		//
-		max = counts[0];
-		atom = 0;
-
-		for(i=1; i<MAXNATOMS; ++i)
-			if(counts[i] > max)
-			{
-				max = counts[i];
-				atom = i;
-			}
-
-		// construct a terminal node (leaf)
-		n[0] = 0;
-		n[1] = atom%256;
-		n[2] = atom/256;
-		n[3] = 0; // irrelevant
-
-		//printf("%d %f\n", nodeidx-(1<<maxdepth), compute_entropy(atoms, inds, ninds));
-
-		//
 		return 1;
-	}
 	else if(0==ninds || 0.0f==compute_entropy(atoms, inds, ninds))
 	{
 		//
@@ -355,7 +322,7 @@ int* learn_tree(int atoms[], uint8_t* ppixels[], int nsamples, int nrows, int nc
 	int* inds = 0;
 
 	//
-	nnodes = (1<<(tdepth+1)) - 1;
+	nnodes = (1<<tdepth) - 1;
 
 	//
 	tree = (int*)malloc((nnodes+1)*sizeof(int32_t));
@@ -405,7 +372,7 @@ int* learn_tree(int atoms[], uint8_t* ppixels[], int nsamples, int nrows, int nc
 	
 */
 
-int run_tree(int* tree, uint8_t pixels[], int nrows, int ncols)
+int run_tree(int* tree, uint8_t pixels[], int nrows, int ncols, int ldim)
 {
 	int i, idx, tdepth;
 
@@ -416,7 +383,7 @@ int run_tree(int* tree, uint8_t pixels[], int nrows, int ncols)
 	for(i=0; i<tdepth; ++i)
 	{
 		uint8_t* n = (uint8_t*)&tree[idx];
-		idx = 2*idx + BINTEST(n[0], n[1], n[2], n[3], pixels, ncols);
+		idx = 2*idx + BINTEST(n[0], n[1], n[2], n[3], pixels, ldim);
 		
 	}
 
@@ -485,7 +452,7 @@ int run_tree_entry(lua_State * L)
 	//printf("%ld\n", ptr);
 
 	//
-	long int idx = run_tree((int*)ptr, &pixels->storage->data[pixels->storageOffset], pixels->size[0], pixels->size[1]);
+	long int idx = run_tree((int*)ptr, &pixels->storage->data[pixels->storageOffset], pixels->size[0], pixels->size[1], pixels->stride[0]);
 	lua_pushinteger(L, idx);
 
 	//

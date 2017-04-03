@@ -12,17 +12,18 @@ local opt = lapp[[
    -p,--plot                                plot while training
    --coefL2           (default 0)           L2 penalty on the weights
    --type             (default "nn")        predictor architecture: nn | rrr | full
+   --save             (default "")          where to save the model
 ]]
 
 -- fix seed
-torch.manualSeed(1)
+--torch.manualSeed(1)
 
 -- use floats
 torch.setdefaulttensortype('torch.FloatTensor')
 
 --
 --
-batchSize = 16
+batchSize = 400
 learningRate = 0.001
 
 ----------------------------------------------------------------------
@@ -59,7 +60,7 @@ elseif opt.type=='full' then
 end
 
 -- retrieve parameters and gradients
-parameters,gradParameters = model:getParameters()
+parameters, gradParameters = model:getParameters()
 
 -- verbose
 print('<mnist> using model:')
@@ -146,7 +147,7 @@ function train(dataset)
       -- disp progress
       xlua.progress(t, dataset.data:size(1))
    end
-   
+
    -- time taken
    time = sys.clock() - time
    time = time / dataset.data:size(1)
@@ -156,15 +157,6 @@ function train(dataset)
    print(confusion)
    trainLogger:add{['% mean class accuracy (train set)'] = confusion.totalValid * 100}
    confusion:zero()
-
-   -- save/log current net
-   local filename = paths.concat('logs', 'mnist.net')
-   os.execute('mkdir -p ' .. sys.dirname(filename))
-   if paths.filep(filename) then
-      os.execute('mv ' .. filename .. ' ' .. filename .. '.old')
-   end
-   print('<trainer> saving network to '..filename)
-   -- torch.save(filename, model)
 
    -- next epoch
    epoch = epoch + 1
@@ -220,12 +212,17 @@ while true do
    -- train/test
    train(trainData)
    test(testData)
-
    -- plot errors
    if opt.plot then
       trainLogger:style{['% mean class accuracy (train set)'] = '-'}
       testLogger:style{['% mean class accuracy (test set)'] = '-'}
       trainLogger:plot()
       testLogger:plot()
+   end
+   --
+   if opt.save~="" then
+       --
+       --model:clearState()
+       torch.save(opt.save, model)
    end
 end
