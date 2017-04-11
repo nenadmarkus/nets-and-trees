@@ -11,7 +11,7 @@ TDEPTH = 12
 -- download and load MNIST data
 --
 
-require 'dataset-mnist'
+require '../dataset-mnist'
 mnist.download()
 
 trn = torch.load('mnist.t7/train_32x32.t7', 'ascii')

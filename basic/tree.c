@@ -372,6 +372,30 @@ int* learn_tree(int atoms[], uint8_t* ppixels[], int nsamples, int nrows, int nc
 	
 */
 
+int* generate_random_tree(int tdepth, int nrows, int ncols)
+{
+	int i;
+
+	int32_t* tree = (int*)malloc((1<<tdepth)*sizeof(int32_t));
+
+	tree[0] = tdepth;
+	for(i=1; i<(1<<tdepth); ++i)
+	{
+		uint8_t* n = (uint8_t*)&tree[i];
+
+		n[0] = mwcrand()%nrows;
+		n[1] = mwcrand()%ncols;
+		n[2] = mwcrand()%nrows;
+		n[3] = mwcrand()%ncols;
+	}
+
+	return tree;
+}
+
+/*
+	
+*/
+
 int run_tree(int* tree, uint8_t pixels[], int nrows, int ncols, int ldim)
 {
 	int i, idx, tdepth;
@@ -384,7 +408,6 @@ int run_tree(int* tree, uint8_t pixels[], int nrows, int ncols, int ldim)
 	{
 		uint8_t* n = (uint8_t*)&tree[idx];
 		idx = 2*idx + BINTEST(n[0], n[1], n[2], n[3], pixels, ldim);
-		
 	}
 
 	return idx-(1<<tdepth);
@@ -443,6 +466,19 @@ int learn_tree_entry(lua_State * L)
 	return 1;
 }
 
+int generate_random_tree_entry(lua_State * L)
+{
+	int tdepth = (int)lua_tointeger(L, 1);
+	int nrows = (int)lua_tointeger(L, 2);
+	int ncols = (int)lua_tointeger(L, 3);
+
+	long int ptr = (long int)generate_random_tree(tdepth, nrows, ncols);
+
+	lua_pushinteger(L, ptr);
+
+	return 1;
+}
+
 int run_tree_entry(lua_State * L)
 {
 	//
@@ -466,6 +502,7 @@ int run_tree_entry(lua_State * L)
 luaL_Reg funcs[] =
 {
     {"lrn", learn_tree_entry},
+    {"rnd", generate_random_tree_entry},
     {"run", run_tree_entry},
     {0, 0}
 };
