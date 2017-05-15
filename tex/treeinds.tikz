@@ -1,0 +1,150 @@
+\begin{figure}
+	\centering
+	\resizebox{0.5\textwidth}{!}
+	{
+		\begin{tikzpicture}
+			%grid
+			%\draw[dashed, black, line width=0.1, xshift=1, yshift=1] (0, 0) grid (38, 8);
+
+			\node at (-1, -0.5)
+				{\Huge$\Phi=$};
+			\node at (0, -0.5)
+				{\Huge$($};
+			\node at (38, -0.5)
+				{\Huge$)$};
+
+			% T1
+			\node at (5.5, 4)
+				{\Huge Tree 1};
+			\draw[-, line width=5]
+				(1, 1) -- (2.5, 4);
+			\draw[-, line width=5]
+				(4, 1) -- (2.5, 4);
+			\draw[-, line width=5, red]
+				(7, 1) -- (8.5, 4);
+			\draw[-, line width=5]
+				(10, 1) -- (8.5, 4);
+			\draw[-, line width=5]
+				(2.5, 4) -- (5.5, 7);
+			\draw[-, line width=5, red]
+				(8.5, 4) -- (5.5, 7);
+			\draw[-, fill, line width=2]
+				(1, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(4, 1) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(7, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(10, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(2.5, 4) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(8.5, 4) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(5.5, 7) ellipse (0.6);
+			\node at (1, -0.5)
+				{\Huge$0$};
+			\node at (4, -0.5)
+				{\Huge$0$};
+			\node at (7, -0.5)
+				{\Huge$1$};
+			\node at (10, -0.5)
+				{\Huge$0$};
+
+			\draw[dashed, line width=2]
+				(11.5, -1.5) -- (11.5, 0.5);
+
+			% T2
+			\node at (17.5, 4)
+				{\Huge Tree 2};
+			\draw[-, line width=5]
+				(13, 1) -- (14.5, 4);
+			\draw[-, line width=5, red]
+				(16, 1) -- (14.5, 4);
+			\draw[-, line width=5]
+				(19, 1) -- (20.5, 4);
+			\draw[-, line width=5]
+				(22, 1) -- (20.5, 4);
+			\draw[-, line width=5, red]
+				(14.5, 4) -- (17.5, 7);
+			\draw[-, line width=5]
+				(20.5, 4) -- (17.5, 7);
+			\draw[-, fill, line width=2]
+				(13, 1) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(16, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(19, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(22, 1) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(14.5, 4) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(20.5, 4) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(17.5, 7) ellipse (0.6);
+			\node at (13, -0.5)
+				{\Huge$0$};
+			\node at (16, -0.5)
+				{\Huge$1$};
+			\node at (19, -0.5)
+				{\Huge$0$};
+			\node at (22, -0.5)
+				{\Huge$0$};
+
+			\draw[dashed, line width=2]
+				(23.5, -1.5) -- (23.5, 0.5);
+			\node at (25, -0.5)
+				{\Huge$\cdots$};
+			\draw[dashed, line width=2]
+				(26.5, -1.5) -- (26.5, 0.5);
+
+			% Tn
+			\node at (32.5, 4)
+				{\Huge Tree n};
+			\draw[-, line width=5]
+				(28, 1) -- (29.5, 4);
+			\draw[-, line width=5]
+				(31, 1) -- (29.5, 4);
+			\draw[-, line width=5]
+				(34, 1) -- (35.5, 4);
+			\draw[-, line width=5, red]
+				(37, 1) -- (35.5, 4);
+			\draw[-, line width=5]
+				(29.5, 4) -- (32.5, 7);
+			\draw[-, line width=5, red]
+				(35.5, 4) -- (32.5, 7);
+			\draw[-, fill, line width=2]
+				(28, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(31, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(34, 1) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(37, 1) ellipse (0.6);
+			\draw[-, fill, line width=2]
+				(29.5, 4) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(35.5, 4) ellipse (0.6);
+			\draw[-, fill, line width=2, red]
+				(32.5, 7) ellipse (0.6);
+			\node at (28, -0.5)
+				{\Huge$0$};
+			\node at (31, -0.5)
+				{\Huge$0$};
+			\node at (34, -0.5)
+				{\Huge$0$};
+			\node at (37, -0.5)
+				{\Huge$1$};
+
+		\end{tikzpicture}
+	}
+	\caption
+	{
+		The process of generating a sparse feature vector $\Phi$ with an ensemble of $n$ decision trees.
+		The path that a sample takes through each tree is drawn in red.
+		Exactly $n$ components of $\Phi$ are set to $1$ based on these paths.
+		The rest are set to $0$.
+	}
+	\label{fig:treeinds}
+\end{figure}

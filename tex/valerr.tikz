@@ -1,0 +1,31 @@
+\pgfplotsset{every tick label/.append style={font=\tiny}}
+\resizebox{0.8\textwidth}{!}
+{
+	\begin{tikzpicture}
+		\begin{axis} [
+			xlabel={\footnotesize Iteration},
+			ylabel={\footnotesize Normalized error [\%]},
+			xmin=1, xmax=5,
+			ymin=2, ymax=6,
+			legend pos=north east
+		]
+			\addplot[color=red, line width=1]
+				coordinates {
+					(1, 5.81)(2, 4.04)(3, 3.4)(4, 3.08)(5, 2.91)
+				};
+			\addplot[color=green, line width=1]
+				coordinates {
+					(1, 4.89)(2, 3.6)(3, 3.17)(4, 2.96)(5, 2.87)
+				};
+			\addplot[color=blue, line width=1]
+				coordinates {
+					(1, 5.96)(2, 4.2)(3, 3.38)(4, 3.05)(5, 2.90)
+				};
+			\addplot[color=magenta, line width=1]
+				coordinates {
+					(1, 5.78)(2, 4.02)(3, 3.38)(4, 3.11)(5, 2.98)
+				};
+			\legend{\tiny LL,\tiny NN,\tiny RRR,\tiny RRR-BP}
+		\end{axis}
+	\end{tikzpicture}
+}

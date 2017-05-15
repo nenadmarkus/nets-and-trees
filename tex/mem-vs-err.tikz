@@ -1,0 +1,69 @@
+\pgfplotsset{every tick label/.append style={font=\tiny}}
+\resizebox{0.4\textwidth}{!}
+{
+	\begin{tikzpicture}
+		\node at (4.25, 3)
+			{Common subset};
+		\begin{axis} [
+			%title={\footnotesize Common subset},
+			%xlabel={\footnotesize Storage [kB]},
+			%ylabel={\footnotesize Error [\%]},
+			ticklabel style = {font=\large},
+			xmin=0, xmax=9000,
+			ymin=3.75, ymax=7.5,
+			legend pos=north east
+		]
+			\addplot[color=red, line width=2]
+				coordinates {
+					(8332, 4.20)(7059, 4.21)(5960, 4.20)(4949, 4.20)(3980, 4.25)(3034, 4.39)(2098, 4.97)(1168, 7.25)
+				};
+			\addplot[color=green, line width=2]
+				coordinates {
+					(2367, 3.96)(2067, 3.97)(1808, 3.96)(1570, 3.97)(1343, 4.00)(1120, 4.00)(900, 4.16)(681, 4.99)
+				};
+			\addplot[color=blue, line width=2]
+				coordinates {
+					(2229, 4.01)(1930, 4.02)(1671, 4.03)(1433, 4.02)(1205, 4.08)(982, 4.23)(762, 4.19)(543, 5.14)
+				};
+			\addplot[color=magenta, line width=2]
+				coordinates {
+					(2229, 4.12)(1930, 4.14)(1671, 4.13)(1433, 4.15)(1205, 4.18)(982, 4.25)(762, 4.47)(543, 5.61)
+				};
+			\legend{\small LL,\small NN,\small RRR,\small RRR-BP}
+		\end{axis}
+	\end{tikzpicture}
+}
+
+\resizebox{0.4\textwidth}{!}
+{
+	\begin{tikzpicture}
+		\node at (4.25, 3)
+			{Challenging subset};
+		\begin{axis} [
+			%title={\footnotesize Challenging subset},
+			%xlabel={\footnotesize Storage [kB]},
+			%ylabel={\footnotesize Error [\%]},
+			ticklabel style = {font=\large},
+			xmin=0, xmax=9000,
+			ymin=10, ymax=18.5,
+			legend pos=north east
+		]
+			\addplot[color=red, line width=2]
+				coordinates {
+					(8332, 11.43)(7059, 11.42)(5960, 11.47)(4949, 11.48)(3980, 11.51)(3034, 11.84)(2098, 12.97)(1168, 18.04)
+				};
+			\addplot[color=green, line width=2]
+				coordinates {
+					(2367, 10.65)(2067, 10.66)(1808, 10.63)(1570, 10.56)(1343, 10.69)(1120, 10.83)(900, 11.16)(681, 13.18)
+				};
+			\addplot[color=blue, line width=2]
+				coordinates {
+					(2229, 10.21)(1930, 10.23)(1671, 10.28)(1433, 10.27)(1205, 10.30)(982, 10.46)(762, 11.35)(543, 14.48)
+				};
+			\addplot[color=magenta, line width=2]
+				coordinates {
+					(2229, 12.02)(1930, 12.05)(1671, 12.06)(1433, 12.07)(1205, 12.09)(982, 12.27)(762, 13.20)(543, 16.88)
+				};
+		\end{axis}
+	\end{tikzpicture}
+}
